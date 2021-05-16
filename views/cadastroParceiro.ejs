@@ -1,0 +1,61 @@
+<%- include('./partials/header') %>
+    <link rel="stylesheet" href="../css/cadastroParceiro.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> 
+
+    <a href="/perfilAdm" class="back"><i class="back fas fa-caret-square-left"></i>Voltar</a>
+    <main>
+      <div class="container">
+            <section class="img">
+                <form action="/perfilAdm/cadastroParceiro" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <img src="../images/upload_image.png" id="imgUpload" alt="upload_image" class="upload-image">
+                        <label for="fupload" class="control-label label-bordered"><strong>Clique aqui</strong> <br> para escolher um arquivo</label>
+                        <div class="nomeArquivo"></div>
+                        <input hidden type="file" id="fupload" name="foto" class="fupload form-control" />
+                    </div>
+            </section>
+
+
+            <section>   
+                <div class="form">
+                    <h1>Ecocity Parceiros</h1>
+
+                    <div class="form-input empresa " id="f-empresa">
+                        <input type="text" data-mask = "00.000.000/0000-00" onblur="checkCnpj(this.value)"  class="cnpj" id="cnpj" name="cnpj" placeholder="CNPJ">
+                        <input class="nome" type="text" id="nome" name="name" placeholder="Nome">
+
+                        <button type="submit" name="button">ENVIAR CADASTRO</button>
+                    </div>
+                </div>
+                </form>
+            </section>
+
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+        <script >
+          
+          function checkCnpj(cnpj)
+          {
+            $.ajax({
+              'url': 'https://www.receitaws.com.br/v1/cnpj/' + cnpj.replace(/[^0-9]/g, ''),
+              'type': 'GET',
+              'dataType': 'jasonp',
+              'succsess': function(data){
+                if(data.nome == undefined){
+                  alert(data.status + "" + data.message)
+                }else {
+                  document.getElementById('nomeEmpresa').value = data.nome
+                  document.getElementById('endereco').value = data.logradouro
+                  document.getElementById('cep').value = data.cep
+                }
+              }
+            })
+          }
+        </script>
+
+        <script src="../javascripts/cadastro.js"></script>
+        <%- include('./partials/footer') %>
+
+     

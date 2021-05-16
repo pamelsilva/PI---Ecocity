@@ -1,0 +1,73 @@
+<%- include('./partials/header') %>
+<link rel="stylesheet" href="/css/cadastro.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> -->
+
+
+<main>
+  <div class="container">
+            <section class="img" >
+          <form action="cadastroEmpresa" id="form-cadastro"method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <img src="/images/upload_image.png" id="imgUpload" alt="upload_image" class="upload-image">
+                  <label for="fupload" class="control-label label-bordered"><strong>Clique aqui</strong> <br> para escolher um arquivo</label>
+                  <div class="nomeArquivo"></div>
+                  <input hidden type="file" id="fupload" name="foto" class="fupload form-control" />
+              </div>
+            </section>
+
+    
+            <section>
+              <div class="form">
+                  <h1>Cadastro</h1>
+                  <p>Escolha uma opção</p>
+                  <div class="escolha">
+                    <a href="/cadastroUsuario"><button class="button cliente "  type="button" name="button-cliente" >Cliente</button></a>
+                        <a href="#"><button class="button empresa darkMode"  type="button" name="button-empresa" >Empresa</button></a>
+                  </div>
+                    <div class= "form-input empresa " id="f-empresa" >
+                      <input type="text"  onblur="checkCnpj(this.value)"  class="cnpj" data-mask = "00.000.000/0000-00" id="cnpj" name="cnpj" placeholder="CNPJ" required>
+                      <input class="nome" type="text" id="nomeEmpresa" name="nameEmpresa" placeholder="Nome" required>
+                      <input class="endereco" type="text" id="endereco" name="endereco" placeholder="Endereço" required>
+                      <input class="cep" type="text" id="cep" name="cep" placeholder="Cep" required>
+                      <input class="email" type="text" id="emailEmpresa" name="emailEmpresa" placeholder="E-mail" required>
+                      <input class="senha" type="password" id="passwordEmpresa" name="passwordEmpresa" placeholder="Senha" required >
+                    
+                      <button type="submit" id="submitEmpresa" name="button">ENVIAR CADASTRO</button>
+                    </div> 
+                  </div>
+                </form>
+        </section>
+      
+      </div>
+      <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+      <!-- <% if(typeof error !== 'undefined') {%>  -->
+        <!-- <script> -->
+          <!-- swal("Ops!", "<%= error%>", "error"); -->
+        <!-- </script> -->
+      <!-- <% }  %>  -->
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+      <script >
+        
+        async function checkCnpj(cnpj)
+        {
+          const cnpjFormatado = cnpj.replace(/[^0-9]/g, '')
+          const resposta = await fetch( 'https://brasilapi.com.br/api/cnpj/v1/' + cnpjFormatado , {
+            headers: { "Content-Type" : "application/json" },
+          })
+          const data = await resposta.json()
+            if(resposta.status !== 200 ){
+                  alert( data.message)
+                }else {
+                  document.getElementById('nomeEmpresa').value = data.razao_social
+                  document.getElementById('endereco').value = data.logradouro
+                  document.getElementById('cep').value = data.cep
+                }
+
+        }
+      </script>
+  <script src="/javascripts/cadastro.js"> </script>
+<%- include('./partials/footer') %>
+

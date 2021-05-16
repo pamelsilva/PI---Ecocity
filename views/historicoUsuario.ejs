@@ -1,0 +1,84 @@
+
+  <%- include('./partials/header-logado') %> 
+
+  
+
+  
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+<!-- cdn datatables  -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+<!-- meu css --> 
+<link rel="stylesheet" href="../css/adm.css">
+
+  <a href="/perfilUsuario" class="back"><i class="back fas fa-caret-square-left"></i>Voltar</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-4">
+        <h1 >Histórico de Coletas</h1>
+      </div>
+    </div>
+    <form action="" method="post">
+      <div class="row">
+        <div class="col-md-12">
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive-md">
+            <table class="table  table-bordered table-hover mydatatable" style="width:100%">
+              <thead class="thead-dark">
+                <tr>
+                  <th >Pedido</th>
+                  <th >Empresa Coletora</th>
+                  <th >Materiais</th>
+                  <th>Data pedido</th>
+                </tr>
+              </thead>
+              <tbody class="col-md-12">
+                <% pedidos.forEach(pedido => { %>
+                  <tr>
+                    <th scope="row"><%= pedido.id %></th>
+                    <td><%= pedido.Empresa_Coletora.nome %></td>
+                    <td><%= pedido.item %></td>
+                    <td><%= pedido.createdAt %></td>
+                  </tr>
+                <% }) %>  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+<br><br><br>
+
+<!-- cdn datatable  -->
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $('.mydatatable').DataTable({
+      "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Desculpe, nenhum registro encontrado",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro disponível",
+            "infoFiltered": "filtrado de _MAX_ registros totais"
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+

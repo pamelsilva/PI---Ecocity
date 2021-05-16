@@ -1,0 +1,68 @@
+<% if( !user ) { %> 
+  <%- include('./partials/header') %> 
+  <% } else { %> 
+  <%- include('./partials/header-logado') %> 
+  <% } %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@5.4.0/keen-slider.min.css"/>
+<link rel="stylesheet" href="./css/perfilUsuario.css">
+    
+  <main>
+    <div class="container">
+      <div class class="header-container">
+        <section class="imagem" >
+          <img src="/images/faixa_perfil_usuario.png" alt="faixa_perfil_usuario" class="faixa_perfil_usuario">
+          <article class="usuario">
+            <img src="/post/<%=usuario.imagem %>" alt="upload_imagem" class="foto"> 
+            <h1> <%= user.nome %></h1>
+          </article>
+        </section>
+      </div>
+      <div class="main-container">
+        <section class="pontuacao">
+          <div class="card">
+            <div class="content">
+              <img class="small-logo" src="./images/recicling-img.png" alt="recicling-card">
+              <h3>Reciclagem</h3>
+              <h2 id="pontuacaoTotal">
+                <% if( usuario.pontuacao <=0 ) { %> 
+                  <%= "0" %> 
+                <% } else { %> 
+                  <%= usuario.pontuacao%>
+                <% } %>
+              <span>pts</span>
+            </div>
+          </div>
+    
+          <div class="historico">
+             <a href="/perfilUsuario/historico"><h2> Histórico de Reciclagem </h2></a>
+          </div>
+          <!-- ------------------- versão mobile-----------------------------  -->
+          <div class="historico-mobile">
+            <h2> Histórico de Reciclagem </h2>
+          </div>
+        </section>
+        <span class="parceiro">Troque já seus pontos em um de nossos parceiros</span>
+          
+        <section class="parceiros">
+          <article id="my-keen-slider" class="keen-slider">
+            
+            <% parceiros.forEach(parceiro => { %>
+              <div class="keen-slider__slide number-slide">
+                  <a href="/perfilUsuario/listarVoucher/<%= parceiro.id %> ">
+                  <img class="img-parceiro" src="/post/<%=parceiro.imagem %>" alt="...">
+                </a>
+                  
+                </div>
+                <% }) %> 
+            
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/keen-slider@5.4.0/keen-slider.min.js"></script>
+  <script src="./javascripts/perfilUsuarioCarrosel.js"></script> 
+
+   
+  <%- include('./partials/footer') %>

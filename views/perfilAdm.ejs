@@ -1,0 +1,66 @@
+<%- include('./partials/header-logado') %> 
+
+<link rel="stylesheet" href="/css/perfilAdm.css">
+    
+  <main>
+    <div class="container-main">
+      <div class class="header-container">
+        <section class="imagem" >
+          <img src="/images/faixa_perfil_usuario.png" alt="faixa_perfil_usuario" class="faixa_perfil_usuario">
+          <article class="usuario">
+            <img src="/images/user-admin.png" alt="imagem Admin" class="foto"> 
+            <h1>Administrador</h1>
+          </article>
+        </section>
+      </div>
+        <div class="main-container">
+            <div class="bg">
+              <img src="/images/bg-adm.png" alt="imagem fundo" class="bg-adm"> 
+            </div>
+            <div class="cards">
+              <div class="row ">
+                <div class="col-sm-4">
+                  <div class="card text-center" >
+                    <div class="card-body">
+                      <h5 class="card-title">Cadastrar parceiros</h5>
+                      <p class="card-text">Cadastre uma empresa parceira para que o usuario troque seus pontos por vouchers</p>
+                      <a href="/perfilAdm/cadastroParceiro" class="btn btn-success">Criar Cadastro</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card text-center" >
+                    <div class="card-body">
+                      <h5 class="card-title">Fazer Buscas</h5>
+                      <p class="card-text">Fazer buscas encontrando usuarios e empresas coletoras que foram cadastradas</p>
+                      <a href="/perfilAdm/admFiltroUsuario" class="btn btn-success">Realizar Buscas</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <div class="row row2 ">
+                  <div class="col-sm-4">    
+                    <div class="card text-center" >
+                      <div class="card-body">
+                        <h5 class="card-title">Cadastrar Voucher</h5>
+                        <p class="card-text">Cadastrar descontos para beneficios dos Usuários</p>
+                        <a href="/perfilAdm/cadastroVoucher" class="btn btn-success">Criar Voucher</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">   </div>
+                </div>
+                
+              
+            </div>
+      </div>
+    </div>
+        
+  </main>
+  <br><br>
+  
+  
+  
+
+   
+  <%- include('./partials/footer') %>
