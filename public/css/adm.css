@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+}
+a.back{
+    width: 50px;
+    height:10px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 30px;
+    text-decoration: none;
+    color: #263238;;
+    transition-duration:  0.3s;
+}
+i.back{
+    margin-right: 5px;
+}
+a.back:hover  {
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+tr .bt-bt {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+td{
+    height:100%;
+}
+.btnBusca{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.form-control {
+    width: 100%;
+    border: none;
+    background-color: rgb(245, 245, 245);
+}
+.form-select{
+    background-color: rgb(245, 245, 245);
+    line-height: 1.5;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: #495057;
+    width: 100%;
+    border: none;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+} 
+
+.img-parceiro{
+    display: block;
+    margin: 20px auto 0;
+    max-height:150px;
+    max-width: 200px;
+}
+img.foto{
+    z-index: 1;
+    width: 85px;
+    height: 85px;
+    object-fit:fill;
+    border-radius:50%;
+    position: relative;
+    top:-60px;
+    left: 20px;
+}
+
+@media (max-width: 768px) { 
+
+    .btnBusca{
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        margin: 0 auto;
+    }
+    .btn {
+        margin-bottom: 10px;
+    }
+}
